@@ -43,3 +43,9 @@
   justify-content: space-around;
   font-size: large;
 }
+
+#journalEntries{
+  display:flex;
+  justify-content:space-evenly ;
+  border: 1px solid black;
+}

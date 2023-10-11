@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom'
 import Home from './pages/Home';
 import About from './pages/About';
 import Journals from './pages/Journals';
-
+import Edit from './pages/Edit';
 import './App.css';
 
 function App() {
+
   return (
     <div className="App">
           
@@ -14,8 +15,8 @@ function App() {
         <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/about' element={<About/>} />
-        {/* <Route path='/:id' element={<Journal />}/> */}
         <Route path='/journals' element={<Journals/>} />
+        <Route path='/journals/:id' element={<Edit />}/>
         {/* <Route path='/:id/edit' element={<EditJournal />}/> */}
         </Routes>
         

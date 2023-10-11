@@ -2,31 +2,33 @@ import axios from "axios"
 
 const baseURL = 'http://localhost:3005/journals'
 
-export const getJournals = () => {
+export const getJournals = async () => {
     const URL = baseURL
-    const response = axios.get(URL)
+    const response = await axios.get(URL)
     return response
 }
 
-export const getOneJournal = (id) => {
+export const getOneJournal = async (id) => {
     const URL = `${baseURL}/${id}`
-    const response = axios.get(URL)
+    const response = await axios.get(URL)
+    console.log(response)
     return response
 }
 
-export const editJournal = (id , updatedJournal) => {
-    const URL = `${baseURL}/${id}`
-    const response = axios.put(URL, updatedJournal)
+export const editJournal = async (id) => {
+    const URL = `${baseURL}/${id}/edit`
+    const response = await axios.put(URL)
+    console.log(response)
     return response
 
 }
 
-export const createJournal = (journal) => {
+export const createJournal = async (journal) => {
     const URL = baseURL
-    const response = axios.post(URL, journal)
+    const response = await axios.post(URL, journal)
     return response
 }
-export const deleteJournal = (id) => {
+export const deleteJournal = async (id) => {
     const URL = `${baseURL}/${id}`
     const response = axios.delete(URL)
     return response

@@ -10,8 +10,9 @@ export default function Journals() {
 
     const [journals, setJournals] = useState([])
     // Fetch Data From API
+    console.log(journals)
     useEffect(() => {
-        getJournals().then(res => setJournals(res.data))
+        getJournals().then(res => setJournals(res.data?.data?.journals))
     }, [])
     console.log(journals)
 
@@ -19,33 +20,8 @@ export default function Journals() {
     <div>
     <Nav />
     This is the All Journals Page
-        <div>
-            {journals.map((journal) => {
-                return(
-                    <div>
-                        <h2>{journal.title}</h2><br/>
-                        {/* <Link to= {`/${journal._id}`}>{journal.title}</Link> */}
-                        </div>
-                )
-            })}
-        </div>
 
-            <Entries/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <Entries/>
 
     <div id='JournalForm'>
         <h1> Create New</h1>
@@ -60,6 +36,46 @@ export default function Journals() {
 
                 </form>
 </div>
+
+<br/> <br/>
+
+
+        <div id='journalEntries'>
+            {journals.map((journal) => {
+                
+                return(
+                    <div>
+                        <h2>Title: <br/>{journal.title}</h2><br/>
+                        <h2>Journal Entry:<br/> {journal.journalEntry}</h2><br/>
+                        <h2>Journal Date:<br/> {journal.date}</h2><br/>
+                        <h3>Day: {journal.wasTodayAGoodDay? `Today Was A Good Day` : `Today Wasn't A Good Day`}</h3>
+                        
+                        {/* <Link to={`/journals/${journal._id}`}>View</Link> <br/> */}
+                        <Link to={`/journals/${journal._id}`}>Edit</Link> <br/>
+
+                        <a>Delete</a>
+                        {/* <Link to= {`/${journal._id}`}>{journal.title}</Link> */}
+                        </div>
+                )
+            })}
+        </div>
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     </div>
