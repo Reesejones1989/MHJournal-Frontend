@@ -5,9 +5,10 @@ export default function About(props) {
   return (
     <div>
         <Nav />
-        This is the About page
+   <h3> This Application was created to have a safe space to submit periodic journal entries to track and view various feelings and states during the time
+   </h3>
 
-
+   
 
     </div>
   )

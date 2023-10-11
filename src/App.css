@@ -38,14 +38,30 @@
 }
 
 .Nav{
-  background-color: black;
+  background-color: lightblue;
   display: flex;
   justify-content: space-around;
   font-size: large;
+  padding: 5px;
 }
 
 #journalEntries{
   display:flex;
   justify-content:space-evenly ;
   border: 1px solid black;
+}
+
+h1{
+  text-align:center;
+  color: blue;
+}
+
+.App{
+  background-color: bisque;
+  box-sizing: border-box;
+  height: 100vh;
+  
+}
+#JournalForm{
+  box-sizing: border-box;
 }

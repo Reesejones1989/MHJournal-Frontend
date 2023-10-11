@@ -15,9 +15,10 @@ export const getOneJournal = async (id) => {
     return response
 }
 
-export const editJournal = async (id) => {
-    const URL = `${baseURL}/${id}/edit`
-    const response = await axios.put(URL)
+export const editJournal = async (id, data) => {
+    const URL = `${baseURL}/${id}`
+    console.log('URL', URL)
+    const response = await axios.put(URL, data)
     console.log(response)
     return response
 

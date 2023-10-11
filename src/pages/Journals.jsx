@@ -1,10 +1,10 @@
 import React from 'react'
 import Nav from '../components/Nav'
 // import Journalsapi from '../services/journals-api'
-import { getJournals } from '../services/journals-api'
+import { createJournal, deleteJournal, getJournals } from '../services/journals-api'
 import { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
-import Entries from '../components/Entries'
+
 
 export default function Journals() {
 
@@ -15,21 +15,50 @@ export default function Journals() {
         getJournals().then(res => setJournals(res.data?.data?.journals))
     }, [])
     console.log(journals)
+    const [title, setTitle] = useState('')
+    const [date, setDate] = useState('')
+    const [journalEntry, setJournalEntry] = useState('')
+    const [isGoodDay, setIsGoodDay] = useState(false)
 
+    const handleCreate = async (e) => {
+        e.preventDefault()
+        try {
+            const data = {
+                title,
+                date,
+                journalEntry,
+                wasTodayAGoodDay: isGoodDay
+            }
+            const res = await createJournal(data)
+        //    console.log('res.data', res.data)
+            setJournals(prev => [res.data.data,...journals])
+        } catch (error) {
+            console.log('error', error)
+        }
+    }
+    const handleDelete = async (id)=> {
+        try {
+            const res = await deleteJournal(id)
+            console.log('delete res', res)
+            setJournals(prev => prev.filter(journal=> journal._id !== id ))
+        } catch (error) {
+            console.log('error', error)
+            
+        }
+    }
   return (
     <div>
     <Nav />
-    This is the All Journals Page
 
-    <Entries/>
+    {/* <Entries/> */}
 
     <div id='JournalForm'>
-        <h1> Create New</h1>
-            <form action="/journals" method="POST">
-                    Title: <input type='text' name='title'/><br/>
-                    date: <input type='textarea' name='date'/><br/>
-                    journalEntry: <input type='textarea' name='journalEntry'/><br/>
-                    Was Today A Good Day (Check For Yes) <input type='checkbox' name='wasTodayAGoodDay'/><br/>
+        <h1> Create New Journal</h1>
+            <form onSubmit={handleCreate}>
+                    Title: <input type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/><br/>
+                    date: <input type='textarea' name='date' value={date} onChange={(e)=> setDate(e.target.value)}/><br/>
+                    journalEntry: <input type='textarea' value={journalEntry} name='journalEntry' onChange={(e)=> setJournalEntry(e.target.value)}/><br/>
+                    Was Today A Good Day (Check For Yes) <input type='checkbox' name='wasTodayAGoodDay' value={isGoodDay} onChange={(e)=> setIsGoodDay(e.target.value)}/><br/>
 
 
                     <input type="submit" />
@@ -53,8 +82,10 @@ export default function Journals() {
                         {/* <Link to={`/journals/${journal._id}`}>View</Link> <br/> */}
                         <Link to={`/journals/${journal._id}`}>Edit</Link> <br/>
 
-                        <a>Delete</a>
-                        {/* <Link to= {`/${journal._id}`}>{journal.title}</Link> */}
+                        <button onClick={()=> {
+                            handleDelete(journal._id)
+                        }}>Delete</button>
+                       
                         </div>
                 )
             })}

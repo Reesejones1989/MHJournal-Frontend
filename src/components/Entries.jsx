@@ -1,13 +1,12 @@
 import { useNavigate } from 'react-router-dom'
-import { createJournal } from '../services/journals-api'
 
 function Entries(){
     const nav = useNavigate()
 
-    const createEntry = (event) => {
-        const journal = {title: event.target.title.value}
-        createJournal(journal).then(() => nav('/journals'))
-    }
+    // const createEntry = (event) => {
+    //     const journal = {title: event.target.title.value}
+    //     createJournal(journal).then(() => nav('/journals'))
+    // }
 
     return (
         <div>
