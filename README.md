@@ -8,7 +8,12 @@ This Journal Application is an application created to track daily thoughts. It c
 
 
 
-
+## User Stories
+* I can create a new journal entry
+* I can generate a random quote/affirmation
+* I can edit my Journal Entry
+* I Can delete my journal Entry
+* I Can show a history of all Journal Entries
 
 ## Technologies Used
 Technologies Used to create the Mental Health Journal include:
@@ -18,6 +23,7 @@ Express
 MongoDB
 JavaScript
 HTML/CSS
+Axios
 
 # Getting Started
 Deployed Links:
