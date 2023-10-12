@@ -67,6 +67,11 @@ h1{
   /* opacity: 50%; */
   
 }
+
+#Home, #About{
+  height: 100vh;
+  background-color: lightgray;
+}
 #JournalForm{
   box-sizing: border-box;
 }

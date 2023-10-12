@@ -44,7 +44,7 @@ export default function Home() {
     //     helper();
     // },[])
     return (
-        <div className=''>
+        <div id='Home'>
             <Nav/>
             <h1>Mental Health Journal</h1>
             {/* <h1>This is the Home Page
