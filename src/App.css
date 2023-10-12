@@ -46,8 +46,11 @@
 }
 
 #journalEntries{
-  display:flex;
-  justify-content:space-evenly ;
+  display:grid;
+  /* justify-content:space-evenly ; */
+  /* border: 1px solid black; */
+}
+#container {
   border: 1px solid black;
 }
 
@@ -57,11 +60,27 @@ h1{
 }
 
 .App{
-  background-color: bisque;
+  background-color: lightgray;
   box-sizing: border-box;
-  height: 100vh;
+  height: fit-content;
+  /* height: 100% */
+  /* opacity: 50%; */
   
 }
 #JournalForm{
   box-sizing: border-box;
+}
+
+#date{
+  text-decoration: underline;
+  font-size:10px ;
+}
+
+#title{
+  margin-top: -10px;
+}
+
+#AllNavLinks{
+  color: black;
+  font-size: 25px;
 }

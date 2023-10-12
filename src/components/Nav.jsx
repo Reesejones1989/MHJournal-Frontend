@@ -3,14 +3,14 @@ import {Link} from 'react-router-dom'
 export default function Nav(props) {
   return (
     <div className='Nav'>
-    <Link to="/">
+    <Link id='AllNavLinks' to="/">
         <div>Home</div>
     </Link>
-    <Link to="/about">
-        <div>About</div>
-    </Link>
-    <Link to="/journals">
+    <Link id='AllNavLinks' to="/journals">
         <div>Journals</div>
+    </Link>
+    <Link id='AllNavLinks' to="/about">
+        <div>About</div>
     </Link>
     
     </div>

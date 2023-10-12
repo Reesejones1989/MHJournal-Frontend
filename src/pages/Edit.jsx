@@ -3,6 +3,7 @@ import Nav from '../components/Nav'
 import { editJournal, getOneJournal } from '../services/journals-api'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import Entries from '../components/Entries'
 
 export default function Edit(props ) {
     const {id} = useParams();
@@ -10,16 +11,20 @@ export default function Edit(props ) {
     const [date, setDate] = useState('')
     const [journalEntry, setJournalEntry] = useState('')
     const [isGoodDay, setIsGoodDay] = useState(false)
+    // console.log(isGoodDay)
   const navigate = useNavigate()
   useEffect(()=> {
 
     getOneJournal(id).then(res => {
-      console.log('res', res)
+      // console.log('res', res)
       const { data} = res.data
       setDate(data?.date)
       setTitle(data?.title)
       setJournalEntry(data?.journalEntry)
+      // data.wasTodayAGoodDay = 'true'
       setIsGoodDay(data?.wasTodayAGoodDay)
+      // console.log(data?.wasTodayAGoodDay)
+      
     }).catch(err => console.log(err))
   }, [id])
 
@@ -32,7 +37,7 @@ export default function Edit(props ) {
           journalEntry,
           wasTodayAGoodDay: isGoodDay
       }
-      console.log('id', id)
+      // console.log('id', id)
       const response = await editJournal(id, data)
 
       navigate('/journals')
@@ -58,8 +63,8 @@ export default function Edit(props ) {
 <form onSubmit={handleUpdate}>
                     Title: <input type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/><br/>
                     date: <input type='textarea' name='date' value={date} onChange={(e)=> setDate(e.target.value)}/><br/>
-                    journalEntry: <input type='textarea' value={journalEntry} name='journalEntry' onChange={(e)=> setJournalEntry(e.target.value)}/><br/>
-                    Was Today A Good Day (Check For Yes) <input type='checkbox' name='wasTodayAGoodDay' value={isGoodDay} onChange={(e)=> setIsGoodDay(e.target.value)}/><br/>
+                    journal Entry: <input type='textarea' value={journalEntry} name='journalEntry' onChange={(e)=> setJournalEntry(e.target.value)}/><br/>
+                    Was Today A Good Day (Check For Yes) <input type='checkbox' name='wasTodayAGoodDay'checked={isGoodDay} onChange={(e)=> setIsGoodDay(!isGoodDay)}/><br/>
 
 
                     <input type="submit" />

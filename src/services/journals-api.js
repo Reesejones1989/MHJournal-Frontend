@@ -1,6 +1,7 @@
 import axios from "axios"
 
 const baseURL = 'http://localhost:3005/journals'
+const baseURLRender = ''
 
 export const getJournals = async () => {
     const URL = baseURL

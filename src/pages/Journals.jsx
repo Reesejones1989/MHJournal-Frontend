@@ -10,11 +10,11 @@ export default function Journals() {
 
     const [journals, setJournals] = useState([])
     // Fetch Data From API
-    console.log(journals)
+    // console.log(journals)
     useEffect(() => {
         getJournals().then(res => setJournals(res.data?.data?.journals))
     }, [])
-    console.log(journals)
+    // console.log(journals)
     const [title, setTitle] = useState('')
     const [date, setDate] = useState('')
     const [journalEntry, setJournalEntry] = useState('')
@@ -23,6 +23,7 @@ export default function Journals() {
     const handleCreate = async (e) => {
         e.preventDefault()
         try {
+            console.log(isGoodDay)
             const data = {
                 title,
                 date,
@@ -55,11 +56,10 @@ export default function Journals() {
     <div id='JournalForm'>
         <h1> Create New Journal</h1>
             <form onSubmit={handleCreate}>
-                    Title: <input type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/><br/>
+                     Title: <input type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/><br/>
                     date: <input type='textarea' name='date' value={date} onChange={(e)=> setDate(e.target.value)}/><br/>
-                    journalEntry: <input type='textarea' value={journalEntry} name='journalEntry' onChange={(e)=> setJournalEntry(e.target.value)}/><br/>
-                    Was Today A Good Day (Check For Yes) <input type='checkbox' name='wasTodayAGoodDay' value={isGoodDay} onChange={(e)=> setIsGoodDay(e.target.value)}/><br/>
-
+                    journal Entry: <input type='textarea' value={journalEntry} name='journalEntry' onChange={(e)=> setJournalEntry(e.target.value)}/><br/>
+                    Was Today A Good Day (Check For Yes) <input type='checkbox' name='wasTodayAGoodDay'checked={isGoodDay} onChange={(e)=> setIsGoodDay(!isGoodDay)}/><br/>
 
                     <input type="submit" />
 
@@ -73,13 +73,27 @@ export default function Journals() {
             {journals.map((journal) => {
                 
                 return(
-                    <div>
-                        <h2>Title: <br/>{journal.title}</h2><br/>
-                        <h2>Journal Entry:<br/> {journal.journalEntry}</h2><br/>
-                        <h2>Journal Date:<br/> {journal.date}</h2><br/>
-                        <h3>Day: {journal.wasTodayAGoodDay? `Today Was A Good Day` : `Today Wasn't A Good Day`}</h3>
+                    <div id='container'>
+                        <div id='date'>
+                        <h2 id='handle'>Journal Date: </h2>  
+                        <h2 id='value'>{journal.date}</h2><br/>
+                        </div>
+
+                        <div id='title'>
+                        <h2 id='handle'>Title: </h2> 
+                        <h2 id='value'>{journal.title}</h2><br/>
+                        </div>
+
+                        <div id='entry'>
+                        <h2 id='handle'>Journal Entry: </h2>
+                        <h2 id='value'>{journal.journalEntry}</h2><br/>
+                        </div>
                         
-                        {/* <Link to={`/journals/${journal._id}`}>View</Link> <br/> */}
+                        <div id='day'>
+                        <h3 id='handle'>Day: </h3>
+                        <h3 id='value'>{journal.wasTodayAGoodDay? `Today Was A Good Day` : `Today Wasn't A Good Day`}</h3>
+                        </div>
+                       
                         <Link to={`/journals/${journal._id}`}>Edit</Link> <br/>
 
                         <button onClick={()=> {

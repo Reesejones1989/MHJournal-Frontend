@@ -66,10 +66,10 @@ export default function Home() {
 
 <div id='JournalForm'>
             <form onSubmit={handleCreate}>
-                    Title: <input type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/><br/>
+            Title: <input type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/><br/>
                     date: <input type='textarea' name='date' value={date} onChange={(e)=> setDate(e.target.value)}/><br/>
-                    journalEntry: <input type='textarea' value={journalEntry} name='journalEntry' onChange={(e)=> setJournalEntry(e.target.value)}/><br/>
-                    Was Today A Good Day (Check For Yes) <input type='checkbox' name='wasTodayAGoodDay' value={isGoodDay} onChange={(e)=> setIsGoodDay(e.target.value)}/><br/>
+                    journal Entry: <input type='textarea' value={journalEntry} name='journalEntry' onChange={(e)=> setJournalEntry(e.target.value)}/><br/>
+                    Was Today A Good Day (Check For Yes) <input type='checkbox' name='wasTodayAGoodDay'checked={isGoodDay} onChange={(e)=> setIsGoodDay(!isGoodDay)}/><br/>
 
 
                     <input type="submit" />

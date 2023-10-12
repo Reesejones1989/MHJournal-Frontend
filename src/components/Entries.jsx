@@ -10,14 +10,19 @@ function Entries(){
 
     return (
         <div>
-            {/* <h2> Journal Entry</h2>
-            <form onSubmit={createEntry}>
-                <input type="text" name="title" placeholder="Title" id='Title'/> <br/>
-                <input type="text" name="journalEntry" placeholder="Journal Entry" id='journalEntry'/><br/>
 
+{/* <div id='JournalForm'>
+        <h1> Create New Journal</h1>
+            <form onSubmit={handleCreate}>
+                     Title: <input type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/><br/>
+                    date: <input type='textarea' name='date' value={date} onChange={(e)=> setDate(e.target.value)}/><br/>
+                    journal Entry: <input type='textarea' value={journalEntry} name='journalEntry' onChange={(e)=> setJournalEntry(e.target.value)}/><br/>
+                    Was Today A Good Day (Check For Yes) <input type='checkbox' name='wasTodayAGoodDay'checked={isGoodDay} onChange={(e)=> setIsGoodDay(!isGoodDay)}/><br/>
 
-                <input type='submit'/>
-            </form> */}
+                    <input type="submit" />
+
+                </form>
+</div> */}
         </div>
     )
 }
