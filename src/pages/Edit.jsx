@@ -47,7 +47,7 @@ export default function Edit(props ) {
     }
   }
   return (
-    <div>
+    <div id='Edit'>
    
         <Nav />
     {/* <form> 

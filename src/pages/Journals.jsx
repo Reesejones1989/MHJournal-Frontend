@@ -48,7 +48,7 @@ export default function Journals() {
         }
     }
   return (
-    <div>
+    <div id='Journals'>
     <Nav />
 
     {/* <Entries/> */}

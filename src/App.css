@@ -68,10 +68,16 @@ h1{
   
 }
 
-#Home, #About{
+#Home, #About, #Edit{
   height: 100vh;
   background-color: lightgray;
 }
+
+#Edit Form, #Home Form, #Journals Form {
+  margin: 20px;
+  font-size: 30px;
+}
+
 #JournalForm{
   box-sizing: border-box;
 }
